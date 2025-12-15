@@ -1,0 +1,13 @@
+#footer_link {
+    color: #333232;
+    font-size: 13px;
+}
+
+#footer_icon {
+    padding-right: 4px;
+}
+
+#footer_project {
+    color: #333232;
+    font-size: 12px;
+}
