@@ -1,6 +1,6 @@
 # BomberBot GUI 💻
 
-[![GitHub Release](https://img.shields.io/github/v/release/aocoac/BomberBot?style=flat-square)](https://github.com/aocoac/BomberBot/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/bomber-ban/BomberBot?style=flat-square)](https://github.com/bomber-ban/BomberBot/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
 An open-source application for working with the **BomberBot** service. Allows you to work outside of Telegram with our service.
@@ -26,7 +26,7 @@ BomberBot is a **Software as a Service (SaaS)** platform specifically designed f
 
 The easiest way to get started is to download a ready-made build for your OS.
 
-**[⬇️ All releases and downloads](https://github.com/aocoac/BomberBot/releases)**
+**[⬇️ All releases and downloads](https://github.com/bomber-ban/BomberBot/releases)**
 
 
 ## How to use? 🚀
@@ -53,7 +53,7 @@ Prerequisites:
  > **Important:**  It is highly recommended to use a virtual environment (`venv` or `conda`) to manage dependencies and avoid conflicts with other Python projects on your system.
 
 ```
-git clone https://github.com/aocoac/BomberBot.git
+git clone https://github.com/bomber-ban/BomberBot.git
 cd BomberBot
 pip install -r requirements.txt
 python3 app.py
@@ -70,7 +70,7 @@ python3 app.py
 
 
 ```
-git clone https://github.com/aocoac/BomberBot.git
+git clone https://github.com/bomber-ban/BomberBot.git
 cd BomberBot
 py -m venv .venv
 .venv\Script\activate
@@ -120,7 +120,7 @@ sudo apt-get install git patchelf build-essentials python3-dev imagemagick
 ```
 
 ```
-git clone https://github.com/aocoac/BomberBot.git
+git clone https://github.com/bomber-ban/BomberBot.git
 cd BomberBot
 python3 -m venv .venv
 ```
@@ -171,7 +171,7 @@ Interested in incorporating **BomberBot** functionality into your own service or
 
 | Platform     | Address                                                                        |
 | :----------- | :----------------------------------------------------------------------------- |
-| **GitHub**   | [aocoac](https://github.com/aocoac/)                                           |
+| **GitHub**   | [bomber-ban](https://github.com/bomber-ban/)                                   |
 | **Telegram** | @e_sprt                                                                        |
 | **Matrix**   | @d3v1ant:matrix.org                                                            |
 | **Tox**      | `54933BE715B7D27372A0168923751DD6CA9CBA60DEA82520A4CB38782763FA7B18DB7CBB5C85` |
