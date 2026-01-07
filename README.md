@@ -1,4 +1,4 @@
-# BomberBot GUI 💻
+# BomberBot GUI 
 
 [![GitHub Release](https://img.shields.io/github/v/release/bomber-ban/BomberBot?style=flat-square)](https://github.com/bomber-ban/BomberBot/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
@@ -14,7 +14,7 @@ An open-source application for working with the **BomberBot** service. Allows yo
 > **Note:** The desktop application has limited functionality; only order creation is available. 
 
 
-## What is BomberBot? 🧐
+## What is BomberBot? 
 
 BomberBot is a **Software as a Service (SaaS)** platform specifically designed for **stress testing** telecommunications systems and VoIP telephony services.
 
@@ -22,14 +22,14 @@ BomberBot is a **Software as a Service (SaaS)** platform specifically designed f
 * **Goal:** Provides an easy way to perform stress tests on cellular networks worldwide, managing tasks right from your desktop or phone (telegram bot).
 
 
-##  Download 📦
+##  Download 
 
 The easiest way to get started is to download a ready-made build for your OS.
 
-**[⬇️ All releases and downloads](https://github.com/bomber-ban/BomberBot/releases)**
+**[ All releases and downloads](https://github.com/bomber-ban/BomberBot/releases)**
 
 
-## How to use? 🚀
+## How to use? 
 
 1. Download the latest version of the software for your operating system (or run it yourself from the source code / compile the applications and run them).
 
@@ -43,11 +43,11 @@ The easiest way to get started is to download a ready-made build for your OS.
 5. Select the operating mode and fill in all fields.
 
 
-##  Run from source 🧑‍💻
+##  Run from source 
 
 Prerequisites:
- 🐍 **Python 3.11.9**
- 🌳 **GIT**
+ **Python 3.11.9**
+ **GIT**
  ### Recommended: Using a Virtual Environment
  
  > **Important:**  It is highly recommended to use a virtual environment (`venv` or `conda`) to manage dependencies and avoid conflicts with other Python projects on your system.
@@ -65,8 +65,8 @@ python3 app.py
 ###  **Windows 10/11** 🪟
 
 **Prerequisites:**
- 🐍 **Python 3.11.9** _( https://www.python.org/downloads/release/python-3119/ )_ 
- 🌳 **GIT** _( https://git-scm.com/install/windows )_
+ **Python 3.11.9** _( https://www.python.org/downloads/release/python-3119/ )_ 
+ **GIT** _( https://git-scm.com/install/windows )_
 
 
 ```
@@ -104,7 +104,7 @@ pyinstaller app.py ^
     --workpath "build/windows/temp_build"
 ```
 
-**✅ Done! 
+**Done! 
 You can find your `.exe` in `build/windows/dist/BomberBot.exe`** 
 *( it will be portable version, also you can add it to your Taskbar)*
 
@@ -112,7 +112,7 @@ You can find your `.exe` in `build/windows/dist/BomberBot.exe`**
 ### **Linux** Debian 12+/Ubuntu 22.04+🐧
 
 **Prerequisites:**
- 🐍 **Python 3.11.9+**
+ **Python 3.11.9+**
  
 ```
 sudo apt update
@@ -156,18 +156,18 @@ cd dist
 ./BomberBot.AppImage
 ```
 
-**✅ Done! Your application is ready:**
+**Done! Your application is ready:**
 **`BomberBot.AppImage` - click it to start use, it will be automatically added to your applications. Also, you can Pin to Dash if you wish.**
 
 
-##  API & Integration 🔌
+##  API & Integration
 
 Interested in incorporating **BomberBot** functionality into your own service or software?
 
 * **API Documentation:** **[Visit the Developer Portal](https://developer.bomberbot.cc/)**
 
 
-##  Contacts & Support 💬
+##  Contacts & Support
 
 | Platform     | Address                                                                        |
 | :----------- | :----------------------------------------------------------------------------- |
@@ -177,6 +177,6 @@ Interested in incorporating **BomberBot** functionality into your own service or
 | **Tox**      | `54933BE715B7D27372A0168923751DD6CA9CBA60DEA82520A4CB38782763FA7B18DB7CBB5C85` |
 
 ---
-##  License 📄
+##  License
 
 This project is distributed under the **MIT License**. For more details, see the **[LICENSE](LICENSE)** file in the repository root.
