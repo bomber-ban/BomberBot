@@ -60,9 +60,9 @@ python3 app.py
 ```
 
 
-## Build from source ⚙️
+## Build from source
 
-###  **Windows 10/11** 🪟
+###  **Windows 10/11**
 
 **Prerequisites:**
  **Python 3.11.9** _( https://www.python.org/downloads/release/python-3119/ )_ 
@@ -109,10 +109,10 @@ You can find your `.exe` in `build/windows/dist/BomberBot.exe`**
 *( it will be portable version, also you can add it to your Taskbar)*
 
 
-### **Linux** Debian 12+/Ubuntu 22.04+🐧
+### **Linux** Debian 12+/Ubuntu 22.04+
 
 **Prerequisites:**
- **Python 3.11.9+**
+**Python 3.11.9+**
  
 ```
 sudo apt update
