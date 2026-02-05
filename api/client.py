@@ -28,7 +28,7 @@ class APIClient:
         except Exception as e:
             return {'detail': 'error', 'code': str(e)}
 
-    async def create_order_now_mode_time(self, phone: str, duration: int):
+    async def create_order_now_mode_time(self, phone: str, duration: int, carriers_list: list):
         start_time = datetime.datetime.now(datetime.UTC).strftime('%Y-%m-%d %H:%M')
         payload = {
             "mode": "Time",
@@ -36,7 +36,8 @@ class APIClient:
             "duration": int(duration),
             "holder_timezone": "0",
             "scheduled_task": False,
-            "start_time": start_time
+            "start_time": start_time,
+            "carriers": carriers_list
         }
         try:
             async with aiohttp.ClientSession(headers=self.headers) as s:
@@ -45,14 +46,16 @@ class APIClient:
         except Exception as e:
             return {'detail': 'error', 'code': str(e)}
 
-    async def create_order_scheduled_mode_time(self, phone: str, duration: int, start_time: datetime):
+    async def create_order_scheduled_mode_time(self, phone: str, duration: int, start_time: datetime,
+                                               carriers_list: list):
         payload = {
             "mode": "Time",
             "phone_number": phone,
             "duration": int(duration),
             "holder_timezone": "0",
             "scheduled_task": True,
-            "start_time": start_time
+            "start_time": start_time,
+            "carriers": carriers_list
         }
         try:
             async with aiohttp.ClientSession(headers=self.headers) as s:
@@ -61,7 +64,7 @@ class APIClient:
         except Exception as e:
             return {'detail': 'error', 'code': str(e)}
 
-    async def create_order_now_mode_smart(self, phone: str, timezone: int):
+    async def create_order_now_mode_smart(self, phone: str, timezone: int, carriers_list: list):
         start_time = datetime.datetime.now(datetime.UTC).strftime('%Y-%m-%d %H:%M')
 
         if int(timezone) > 0:
@@ -75,7 +78,8 @@ class APIClient:
             "duration": 160,
             "holder_timezone": timezone,
             "scheduled_task": False,
-            "start_time": start_time
+            "start_time": start_time,
+            "carriers": carriers_list
         }
         try:
             async with aiohttp.ClientSession(headers=self.headers) as s:
@@ -84,7 +88,8 @@ class APIClient:
         except Exception as e:
             return {'detail': 'error', 'code': str(e)}
 
-    async def create_order_scheduled_mode_smart(self, phone: str, timezone: int, start_time: datetime):
+    async def create_order_scheduled_mode_smart(self, phone: str, timezone: int, start_time: datetime,
+                                                carriers_list: list):
         if int(timezone) > 0:
             timezone = f"+{timezone}"
         else:
@@ -95,7 +100,8 @@ class APIClient:
             "duration": 160,
             "holder_timezone": timezone,
             "scheduled_task": True,
-            "start_time": start_time
+            "start_time": start_time,
+            "carriers": carriers_list
         }
         try:
             async with aiohttp.ClientSession(headers=self.headers) as s:
