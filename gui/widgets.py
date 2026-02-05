@@ -273,14 +273,19 @@ class ApproveWidget(QWidget):
                 if order_details.get('Scheduled'):
 
                     api_answer = await self.step_widget.main.client.create_order_scheduled_mode_smart(
-                        order_details.get('Phone'), order_details.get('Timezone'), order_details.get('Scheduled')
+                        order_details.get('Phone'),
+                        order_details.get('Timezone'),
+                        order_details.get('Scheduled'),
+                        order_details.get('Carriers', [])
                     )
                     return api_answer
 
                 else:
 
                     api_answer = await self.step_widget.main.client.create_order_now_mode_smart(
-                        order_details.get('Phone'), order_details.get('Timezone')
+                        order_details.get('Phone'),
+                        order_details.get('Timezone'),
+                        order_details.get('Carriers', [])
                     )
                     return api_answer
 
@@ -290,14 +295,19 @@ class ApproveWidget(QWidget):
                 if order_details.get('Scheduled'):
 
                     api_answer = await self.step_widget.main.client.create_order_scheduled_mode_time(
-                        order_details.get('Phone'), order_details.get('Minutes'), order_details.get('Scheduled')
+                        order_details.get('Phone'),
+                        order_details.get('Minutes'),
+                        order_details.get('Scheduled'),
+                        order_details.get('Carriers', [])
                     )
                     return api_answer
 
                 else:
 
                     api_answer = await self.step_widget.main.client.create_order_now_mode_time(
-                        order_details.get('Phone'), order_details.get('Minutes')
+                        order_details.get('Phone'),
+                        order_details.get('Minutes'),
+                        order_details.get('Carriers', [])
                     )
                     return api_answer
 
@@ -360,6 +370,8 @@ class StepWidget(QWidget):
                          "📞 Number of calls: 160\n"
                          "📦 Price of the service: 8 Euros\n"
                          "📌 Each call is unique and comes from a new number",
+                "Carriers": "📡️ Enter carriers separated by commas,\n"
+                            "or leave the field empty to use default carrier mode",
                 "Timezone": "🌎 To continue, please enter the number owner's time zone (from -12 to +12)",
                 "Scheduled": "⏰ To continue, send in the chat the date when work on the phone should begin,\n"
                              " or leave the field empty.\n\n"
@@ -370,6 +382,7 @@ class StepWidget(QWidget):
                 "Confirm": f"📞 Phone: {data.get('Phone')}\n"
                            f"🕘 Task duration: 2 days\n"
                            f"#️⃣ Number of calls/minutes: 160\n"
+                           f"📡 Carriers: {', '.join(data.get('Carriers', [])) if data.get('Carriers') else '—'}\n"
                            f"💶 Order price: 8.00 Euros\n"
                            f"🌎 Subscriber's time zone: {data.get('Timezone')}\n\n"
 
@@ -383,6 +396,8 @@ class StepWidget(QWidget):
 📌 Each call is unique and comes from a new number
 ⌨️ Enter how many minutes we should work on this phone""",
                 "Phone": "⌨️ To continue, enter your phone number in the field",
+                "Carriers": "📡️ Enter carriers separated by commas,\n"
+                            "or leave the field empty to use default carrier mode",
                 "Scheduled": "⏰ To continue, send in the chat the date when work on the phone should begin,\n"
                              " or leave the field empty.\n\n"
                              "❗️ For the start, the time will be taken in the UTC format.\n"
@@ -392,6 +407,7 @@ class StepWidget(QWidget):
                 "Confirm": f"📞 Phone: {data.get('Phone')}\n"
                            f"🕘 Task duration: {data.get('Minutes')} minutes\n"
                            f"#️⃣ Number of calls/minutes: {data.get('Minutes')}\n"
+                           f"📡 Carriers: {', '.join(data.get('Carriers', [])) if data.get('Carriers') else 'Default'}\n"
                            f"💶 Order price: {round(float(data.get('Minutes')) * 0.05, 2) if data.get('Minutes') else 0}"
                            f" Euros\n\n"
 
@@ -428,6 +444,9 @@ class StepWidget(QWidget):
             self.layout.addLayout(layout_desc)
             self.input_field = QLineEdit()
 
+            if step_name == "Carriers" and isinstance(value, list):
+                value = ", ".join(value)
+
             if value:
                 self.input_field.setText(value)
 
@@ -460,13 +479,16 @@ class StepWidget(QWidget):
         if not self.validate():
             return
         else:
-            submit_callback(self.input_field.text())
+            submitted_value = getattr(self, "parsed_value", self.input_field.text())
+            submit_callback(submitted_value)
+            # submit_callback(self.input_field.text())
 
     def validate(self):
         try:
             step = self.main.modes[self.main.current_mode][self.main.current_step]
             value = self.input_field.text().strip()
             error = None
+            self.parsed_value = value
 
             # === PHONE VALIDATION ===
             if step == "Phone":
@@ -478,7 +500,23 @@ class StepWidget(QWidget):
                     error = "Phone number is too long."
                 if not value:
                     error = "Enter the Phone number."
+                    # === CARRIERS VALIDATION ===
 
+            elif step == "Carriers":
+                if not value:
+                    self.parsed_value = []
+                else:
+                    carriers = [item.strip() for item in value.split(",")]
+                    if any(not item for item in carriers):
+                        error = "Carriers must be separated by commas without empty values."
+                    elif len(carriers) > 100:
+                        error = "You can enter up to 100 carriers."
+                    else:
+                        invalid = [item for item in carriers if len(item) < 4 or len(item) > 8]
+                        if invalid:
+                            error = "Each carrier must be 4 to 8 characters long."
+                        else:
+                            self.parsed_value = carriers
             # === TIMEZONE VALIDATION ===
             elif step == "Timezone":
                 try:

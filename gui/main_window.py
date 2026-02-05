@@ -133,8 +133,8 @@ class MainWindow(QMainWindow):
 
         # Breadcrumbs
         self.modes = {
-            "Smart": ["Phone", "Timezone", "Scheduled", "Confirm"],
-            "Time": ["Minutes", "Phone", "Scheduled", "Confirm"]
+            "Smart": ["Phone", "Carriers", "Timezone", "Scheduled", "Confirm"],
+            "Time": ["Minutes", "Carriers", "Phone", "Scheduled", "Confirm"]
         }
         self.order_data = {
             "Smart": {},
